@@ -69,3 +69,11 @@ jobs:
     uses: ./.github/workflows/resuable.yml
     with:
       artifact-name: dist-files
+    # secrets:
+    #   some-secrets: ${{ secrets.MY_SECRET }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy result
+        run: echo "${{ needs.deploy.outputs.result }}"
